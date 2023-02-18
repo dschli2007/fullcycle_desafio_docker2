@@ -1,0 +1,15 @@
+{
+  "name": "desafio2",
+  "version": "1.0.0",
+  "description": "Desafio Full Cycle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dirceu Schlickmann",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}

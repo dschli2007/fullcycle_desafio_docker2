@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+
+  ngnix:
+    container_name: nginx
+    build:
+      context: nginx
+    networks: 
+      - netdesafio2
+    tty: true
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+      - db
+    restart: always
+
+  app:
+    container_name: app
+    build:
+      context: node
+    networks: 
+      - netdesafio2
+    tty: true
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mysql:5.7.16
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=dbdesafio2
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - netdesafio2
+      
+
+networks:
+  netdesafio2:
+    driver: bridge
