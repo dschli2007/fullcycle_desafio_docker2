@@ -4,6 +4,6 @@ Para executar:
 
 `docker compose up -d`
 
-Navegar para:
+Para visualizar:
 
 `http://localhost:8080`
