@@ -20,14 +20,14 @@ services:
     container_name: app
     build:
       context: node
+    entrypoint: wait-for db:3306 -t 40 -- /user/src/app/start.sh
     networks: 
-      - netdesafio2
-    tty: true
+      - netdesafio2    
     ports:
       - "3000:3000"
     depends_on:
       - db
-    restart: always
+    
 
   db:
     image: mysql:5.7.16

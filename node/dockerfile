@@ -4,9 +4,19 @@ WORKDIR /user/src/app
 
 COPY index.js ./
 COPY package*.json ./
+COPY start.sh ./
+
+RUN chmod +x /user/src/app/start.sh
+
 
 RUN npm install 
 
+RUN apt update && \
+    apt install -y wget netcat && \
+    wget -q -O /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for && \
+    chmod +x /usr/bin/wait-for
+
+USER node
 
 EXPOSE 3000
 
